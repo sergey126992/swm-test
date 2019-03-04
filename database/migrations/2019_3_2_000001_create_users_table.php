@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Migrations\Migration;
-use Phaza\LaravelPostgis\Schema\Blueprint;
+use Illuminate\Database\Schema\Blueprint;
 
 class CreateUsersTable extends Migration
 {
