@@ -57,6 +57,5 @@ INSERT INTO position (point) VALUES (ST_SetSRID(ST_MakePoint(4, 4), 4326));
 
 SELECT user_id
 FROM position
-WHERE  st_within (point, ST_GeomFromText(
-    'POLYGON ((1 1, 8 1, 8 7, 1 7, 1 1))',4326));
+WHERE  st_within (point, ST_GeomFromText('POLYGON ((1 1, 8 1, 8 7, 1 7, 1 1))',4326));
 ```
