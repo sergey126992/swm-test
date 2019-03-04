@@ -42,7 +42,7 @@ http://127.0.0.1:8080/api/users?geo_location[nw][lat]=52.57&geo_location[nw][lng
 ```
 
 
-Find point with PostGis
+###Find point with PostGis
 ```
 create table user_positions
 (
