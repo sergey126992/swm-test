@@ -1,8 +1,6 @@
 <?php
 namespace App\Http\Filters;
 
-use Carbon\Carbon;
-
 class UserFilter extends QueryFilter
 {
     /**
@@ -11,10 +9,10 @@ class UserFilter extends QueryFilter
     public function age(array $params)
     {
         if (isset($params['from']))  {
-            $this->builder->where('data->date_of_birth', '<', Carbon::now()->subYear($params['from']));
+            $this->builder->whereRaw(" date_part('year',age((data->>'date_of_birth'::text)::date)) >= ?", $params['from']);
         }
         if (isset($params['to'])) {
-            $this->builder->where('data->date_of_birth', '>', Carbon::now()->subYear($params['to']));
+            $this->builder->whereRaw(" date_part('year',age((data->>'date_of_birth'::text)::date)) <= ?", $params['to']);
         }
     }
 
@@ -23,7 +21,9 @@ class UserFilter extends QueryFilter
      */
     public function hobby(array $params)
     {
-        $this->builder->whereJsonContains('data->hobby', $params);
+        foreach($params as $param){
+            $this->builder->orWhereJsonContains('data->hobby', $param);
+        }
     }
 
     /**
