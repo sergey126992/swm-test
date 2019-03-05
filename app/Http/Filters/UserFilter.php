@@ -9,10 +9,10 @@ class UserFilter extends QueryFilter
     public function age(array $params)
     {
         if (isset($params['from']))  {
-            $this->builder->whereRaw(" date_part('year',age((data->>'date_of_birth'::text)::date)) >= ?", $params['from']);
+            $this->builder->whereRaw(" date_part('year', age((data->>'date_of_birth'::text)::date)) >= ?", $params['from']);
         }
         if (isset($params['to'])) {
-            $this->builder->whereRaw(" date_part('year',age((data->>'date_of_birth'::text)::date)) <= ?", $params['to']);
+            $this->builder->whereRaw(" date_part('year', age((data->>'date_of_birth'::text)::date)) <= ?", $params['to']);
         }
     }
 
